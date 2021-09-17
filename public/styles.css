@@ -1,0 +1,156 @@
+/* TODO
+
+    [names if rows etc]
+    auto-fill
+    auto-fit
+    get auto values of stuff
+
+    ---
+    repeat(times, size);
+        auto-fill
+        auto-fit
+    minmax(min, max)
+
+*/
+
+/* 
+    grid-template-columns: 1fr 2fr 200px auto
+    grid-template-rows:
+        - how mant cols or rows and what size
+        - fr - fraction of free space        
+    grid-template-areas: "a a a"
+                         "b c ."
+                         "b c .";
+        - name grid-area in items (a, b or c)
+        - . - empty cell
+    grid-template: 
+        - shorthand (rows/cols) or (arreas with rows / cols)
+    grid-auto-columns
+        - grid-template-areas: "a a"; grid-auto-columns: 200px; same as grid-template-columns: 200px 200px
+        - size of undefined cols/rows if i.e. grid-template-columns: 50px 50px and some item is grid-column 5/6
+    grid-auto-rows
+        - assigns pattern for auto generated rows/cols (i.e. when want to repeat pattern infinetely)
+
+    column-gap
+    row-gap
+    grid-column-gap *
+    grid-row-gap *
+        - grid line sizes
+        - old naming
+    gap
+    grid-gap
+        - shorthand
+    
+    justify-items: start | end | center | !stretch;
+        - align horizontally (on row axis)
+    align-items: start | end | center | !stretch;
+        - align vertically (on col axis)
+    place-items
+        - shorthand
+
+    justify-content: start | end | center | stretch | space-around | space-between | space-evenly; 
+        - if grid size (width set big) is bigger than total items, how to position them
+    align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+        - same but vertically
+    place-content 
+        - shorthand
+
+
+  ITEMS
+    grid-column-start: number*, span number, name**, span name
+    grid-column-end
+    grid-row-start
+    grid-row-end
+        - item location by specific lines
+        * of line
+        * as named in named line
+    grid-column: 5 / 6
+    grid-row
+        - shorthand
+    grid-area
+        - shorthand rowStart/colStart/rowEnd/colEnd
+        - !! or name for item in grid-template-areas
+    
+    justify-self
+    align-self
+    place-self
+
+    order: 0! | numbers
+        - can be changed
+*/
+
+body {
+  margin: 0;
+}
+
+.grid-container {
+  display: grid;
+  /* grid-template-areas:
+    "header header header"  
+    "sidebar content content";
+  grid-template-rows: 100px 1fr; 
+  grid-template-columns: 160px 1fr; */
+  grid-template:
+    "header header header" 100px
+    "sidebar content content" 1fr / 160px 1fr;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  background-color: lightgray;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: black;
+}
+
+.content {
+  display: grid;
+  grid-area: content;
+  background-color: grey;
+  grid-gap: 10px;
+  padding: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 50px 50px 100px;
+}
+
+.item {
+  background: white;
+}
+.item2 {
+  grid-column-start: span 2;
+  background: darkred;
+}
+
+/* common use cases
+
+--- simple repeatable list
+
+  .container
+    grid-template-columns: 50px 1fr;
+    grid-auto-rows: 20px 60px;
+
+
+--- page layout
+
+  .container
+    grid-template:
+      "header header header" 100px
+      "sidebar content content" 1fr / 160px 1fr;
+
+  .item
+    grid-area: content;
+
+
+-- advanced repeatable list
+
+  .container
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 50px 50px 100px;
+
+  .second-item
+    grid-column-start: span 2;
+
+*/
