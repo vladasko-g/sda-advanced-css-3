@@ -1,6 +1,6 @@
 /* 
   GRID CONTAINER PROPERTIES:
-    grid-template-columns: 1fr 2fr 200px auto
+    grid-template-columns: 1fr | 2fr | 200px | auto
     grid-template-rows:     
     grid-template-areas: "a a a"
                          "b c ."
@@ -11,8 +11,9 @@
     grid-auto-columns
         - grid-template-areas: "a a"; grid-auto-columns: 200px; same as grid-template-columns: 200px 200px
         - size of undefined cols/rows if i.e. grid-template-columns: 50px 50px and some item is grid-column 5/6
-    grid-auto-rows
+    grid-auto-rows: ... | masonry*
         - assigns pattern for auto generated rows/cols (i.e. when want to repeat pattern infinetely)
+        - * experimental not available yet
 
     column-gap
     row-gap
@@ -40,13 +41,14 @@
 
 
   GRID ITEM PROPERTIES:
-    grid-column-start: number*, span number, name**, span name
+    grid-column-start: number*, span number, name**, span name, negative number***
     grid-column-end
     grid-row-start
     grid-row-end
         - item location by specific lines
         * of line
-        * as named in named line
+        ** as named in named line
+        *** not with span
     grid-column: 5 / 6
     grid-row
         - shorthand
@@ -68,14 +70,14 @@ body {
 
 .grid-container {
   display: grid;
-  /* grid-template-areas:
+  grid-template-areas:
     "header header header"  
     "sidebar content content";
   grid-template-rows: 100px 1fr; 
-  grid-template-columns: 160px 1fr; */
-  grid-template:
+  grid-template-columns: 160px 1fr 1fr;
+  /* grid-template:
     "header header header" 100px
-    "sidebar content content" 1fr / 160px 1fr;
+    "sidebar content content" 1fr / 160px 1fr; */
   height: 100vh;
 }
 
@@ -93,9 +95,9 @@ body {
   display: grid;
   grid-area: content;
   background-color: grey;
-  grid-gap: 10px;
+  gap: 10px;
   padding: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: 50px 50px 100px;
 }
 
