@@ -1,30 +1,13 @@
-/* TODO
-
-    [names if rows etc]
-    auto-fill
-    auto-fit
-    get auto values of stuff
-
-    ---
-    repeat(times, size);
-        auto-fill
-        auto-fit
-    minmax(min, max)
-
-*/
-
 /* 
+  GRID CONTAINER PROPERTIES:
     grid-template-columns: 1fr 2fr 200px auto
-    grid-template-rows:
-        - how mant cols or rows and what size
-        - fr - fraction of free space        
+    grid-template-rows:     
     grid-template-areas: "a a a"
                          "b c ."
                          "b c .";
         - name grid-area in items (a, b or c)
-        - . - empty cell
     grid-template: 
-        - shorthand (rows/cols) or (arreas with rows / cols)
+        - shorthand (rows / cols) or (areas with rows / cols)
     grid-auto-columns
         - grid-template-areas: "a a"; grid-auto-columns: 200px; same as grid-template-columns: 200px 200px
         - size of undefined cols/rows if i.e. grid-template-columns: 50px 50px and some item is grid-column 5/6
@@ -56,7 +39,7 @@
         - shorthand
 
 
-  ITEMS
+  GRID ITEM PROPERTIES:
     grid-column-start: number*, span number, name**, span name
     grid-column-end
     grid-row-start
