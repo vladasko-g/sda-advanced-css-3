@@ -71,9 +71,9 @@ body {
 .grid-container {
   display: grid;
   grid-template-areas:
-    "header header header"  
+    "header header header"
     "sidebar content content";
-  grid-template-rows: 100px 1fr; 
+  grid-template-rows: 100px 1fr;
   grid-template-columns: 160px 1fr 1fr;
   /* grid-template:
     "header header header" 100px
@@ -101,10 +101,11 @@ body {
   grid-auto-rows: 50px 50px 100px;
 }
 
-.item {
+.content > div {
   background: white;
 }
-.item2 {
+
+.content > div:nth-child(5n -1) {
   grid-column-start: span 2;
   background: darkred;
 }
